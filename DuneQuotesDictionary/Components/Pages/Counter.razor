@@ -1,0 +1,39 @@
+﻿@page "/counter"
+@rendermode InteractiveServer
+
+<PageTitle>Counter</PageTitle>
+
+<h1>Counter</h1>
+
+<p role="status">Current count: @(currentCount)</p>
+
+<input @bind="message" />
+
+<p>@message</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+<button class="btn btn-primary" @onclick="ShowHidden">Show!</button>
+
+@if (showHidden)
+{
+    <p>HIDDEN</p>
+}
+
+@code {
+    private int currentCount = 0;
+    private bool showHidden = false;
+    private string message = "";
+
+    [Parameter]
+    public int IncrementValue { get; set; } = 1;
+
+    private void IncrementCount()
+    {
+        currentCount += IncrementValue;
+    }
+
+    private void ShowHidden()
+    {
+        showHidden = !showHidden;
+    }
+}

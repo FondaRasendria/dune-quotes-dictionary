@@ -1,10 +1,13 @@
-using Dune_Quotes_Dictionary.Components;
+using DuneQuotesDictionary.Components;
+using MudBlazor.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+builder.Services.AddMudServices();
 
 var app = builder.Build();
 
@@ -16,7 +19,7 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 
 app.UseAntiforgery();
